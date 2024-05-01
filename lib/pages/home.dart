@@ -1,33 +1,150 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class PetMatch extends StatelessWidget {
+  
+  const PetMatch([Key? key]) : super(key: key);
+  
+
+      static const backgroundColorOne =  Color(0xFFD8AC80);
+      static const backgroundColorTwo = Color(0xFFE9EDC9);
+      
+      
 
   @override
   Widget build(BuildContext context) {
+    List<Container> animalCards = [
+        Container(
+          alignment: Alignment.center,
+          color: backgroundColorOne,
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(10.0)
+                ),
+           const CircleAvatar(
+                      backgroundColor: backgroundColorTwo,
+                      radius: 108,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage(
+                          'images/cat_two.jpg',
+                        ),
+                        radius: 90,
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
+                    ),
+                    const Text(
+                      'Monkey',
+                      style: TextStyle(
+                        fontSize: 30,
+                      ),
+                    ),
+                    const Text(
+                      'Cat',
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                    const Divider(
+                      height: 100,
+                      thickness: 10,
+                      indent: 30,
+                      endIndent: 30,
+                      color: Colors.white,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Read More'))
+            ],
+          ),
+        ),
+        Container(
+          alignment: Alignment.center,
+          color: backgroundColorTwo,
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(10.0)
+                ),
+           const CircleAvatar(
+                      backgroundColor: backgroundColorTwo,
+                      radius: 108,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage(
+                          'images/cat_one.jpg',
+                        ),
+                        radius: 90,
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
+                    ),
+                    const Text(
+                      'Hendrix',
+                      style: TextStyle(
+                        fontSize: 30,
+                      ),
+                    ),
+                    const Text(
+                      'Cat',
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                    const Divider(
+                      height: 100,
+                      thickness: 10,
+                      indent: 30,
+                      endIndent: 30,
+                      color: Colors.white,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Read More'))
+            ],
+          ),
+        ),
+      ];
+  
+
     return Scaffold(
       appBar: appBar(context),
-      drawer: drawer(context),
-      body: Center(
-        child: _featuredPets())
-    );
+      //drawer: drawer(context),
+      body: Flexible(
+        child: CardSwiper(
+          cardsCount: animalCards.length,
+          cardBuilder: (context, index, horizontalOffsetPercentage, verticalOffsetPercentage) => animalCards[index] ,
+              ),
+            ),
+          );
   }
 
+  void printText(){
+    print('Button Presse');
+  }
+
+
+
 Widget _featuredPets() => Container(
+  
   padding: EdgeInsets.zero,
         child: const Column(
           children: [
             Text(
               'Featured Pets',
               style: TextStyle(
-                color: Colors.amber,
+                color: backgroundColorTwo,
                 fontSize: 30,
               ),
               ),
             Card(
               elevation: 50,
-              shadowColor: Colors.amber,
-              color: Colors.pink,
+              shadowColor: backgroundColorTwo,
+              color: backgroundColorOne,
               child: SizedBox(
                 width: 300,
                 height: 500,
@@ -35,7 +152,7 @@ Widget _featuredPets() => Container(
                 child: Column(
                   children: [
                     CircleAvatar(
-                      backgroundColor: Colors.amber,
+                      backgroundColor: backgroundColorTwo,
                       radius: 108,
                       child: CircleAvatar(
                         backgroundImage: AssetImage(
@@ -48,12 +165,41 @@ Widget _featuredPets() => Container(
                       height: 10,
                     ),
                     Text(
-                      'Cat',
+                      'Salam',
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.indigo,
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Cat',
+                      style: TextStyle(
+                        fontSize: 25
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      width: 150,
+                      child: ElevatedButton(
+                        onPressed: buttonString,
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(backgroundColorTwo)),
+                          child: Padding(
+                            padding: EdgeInsets.all(4),
+                            child: Row(
+                              children:  [
+                                Icon(Icons.pets),
+                                Text('Read more'),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ),
                   ],
                 )  ,),
               ),
@@ -62,52 +208,52 @@ Widget _featuredPets() => Container(
         ),
       );
       
-        Drawer drawer(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Color(0xFFFEFAE0),
-            ),
-            child: Text('Pet Finder'),
-          ),
-          ListTile(
-            title: const Text('Home'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: const Text('Browse'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: const Text('Supplies'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: const Text('Contact'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
-        ],
-      ),
-    );
-  }
+  //       Drawer drawer(BuildContext context) {
+  //   return Drawer(
+  //     child: ListView(
+  //       padding: EdgeInsets.zero,
+  //       children: [
+  //         const DrawerHeader(
+  //           decoration: BoxDecoration(
+  //             color: Color(0xFFFEFAE0),
+  //           ),
+  //           child: Text('Pet Finder'),
+  //         ),
+  //         ListTile(
+  //           title: const Text('Home'),
+  //           onTap: () {
+  //             Navigator.pop(context);
+  //           },
+  //         ),
+  //         ListTile(
+  //           title: const Text('Browse'),
+  //           onTap: () {
+  //             Navigator.pop(context);
+  //           },
+  //         ),
+  //         ListTile(
+  //           title: const Text('Supplies'),
+  //           onTap: () {
+  //             Navigator.pop(context);
+  //           },
+  //         ),
+  //         ListTile(
+  //           title: const Text('Contact'),
+  //           onTap: () {
+  //             Navigator.pop(context);
+  //           },
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 
   AppBar appBar(BuildContext context) {
     return AppBar(
       title: const Text(
         'Pet Finder',
         style: TextStyle(
-          color: Color(0xFFE9EDC9),
+          color: backgroundColorTwo,
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),
@@ -124,13 +270,19 @@ Widget _featuredPets() => Container(
           icon: const Icon(Icons.search),
         )
       ],
-      backgroundColor: const Color(0xFFD8AC80),
+      backgroundColor: backgroundColorOne,
       centerTitle: true,
     );
   }
 }
 
+
+void buttonString() {
+  print("Button pressed");
+}
+
 class PetSearch extends SearchDelegate {
+  
 //Test List
   List<String> animals = [
     'Roxy',
@@ -141,6 +293,7 @@ class PetSearch extends SearchDelegate {
     'Garfield'
   ];
 
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -149,7 +302,7 @@ class PetSearch extends SearchDelegate {
         onPressed: () {
           query = '';
         },
-      )
+      ),
     ];
   }
 
