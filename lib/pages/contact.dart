@@ -12,6 +12,6 @@ class Contact extends StatelessWidget {
           'Contact'
         ),
       ),
-    );;
+    );
   }
 }

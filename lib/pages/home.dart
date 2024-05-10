@@ -112,13 +112,12 @@ class PetMatch extends StatelessWidget {
   
 
     return Scaffold(
-      appBar: appBar(context),
+      //appBar: appBar(context),
       //drawer: drawer(context),
-      body: Flexible(
-        child: CardSwiper(
+      body:
+        CardSwiper(
           cardsCount: animalCards.length,
           cardBuilder: (context, index, horizontalOffsetPercentage, verticalOffsetPercentage) => animalCards[index] ,
-              ),
             ),
           );
   }
@@ -129,84 +128,6 @@ class PetMatch extends StatelessWidget {
 
 
 
-Widget _featuredPets() => Container(
-  
-  padding: EdgeInsets.zero,
-        child: const Column(
-          children: [
-            Text(
-              'Featured Pets',
-              style: TextStyle(
-                color: backgroundColorTwo,
-                fontSize: 30,
-              ),
-              ),
-            Card(
-              elevation: 50,
-              shadowColor: backgroundColorTwo,
-              color: backgroundColorOne,
-              child: SizedBox(
-                width: 300,
-                height: 500,
-                child: Padding(padding: EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: backgroundColorTwo,
-                      radius: 108,
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(
-                          'images/cat_one.jpg',
-                        ),
-                        radius: 100,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Salam',
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.indigo,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Cat',
-                      style: TextStyle(
-                        fontSize: 25
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    SizedBox(
-                      width: 150,
-                      child: ElevatedButton(
-                        onPressed: buttonString,
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(backgroundColorTwo)),
-                          child: Padding(
-                            padding: EdgeInsets.all(4),
-                            child: Row(
-                              children:  [
-                                Icon(Icons.pets),
-                                Text('Read more'),
-                              ],
-                            ),
-                          ),
-                        ),
-                    ),
-                  ],
-                )  ,),
-              ),
-            ),
-          ],
-        ),
-      );
       
   //       Drawer drawer(BuildContext context) {
   //   return Drawer(

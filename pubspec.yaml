@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_card_swiper: ^7.0.0
+  sliver_tools: ^0.2.12
 
 dev_dependencies:
   flutter_test:
@@ -19,5 +20,17 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+        - images/icons/bird.png
+        - images/icons/dog.png
+        - images/icons/fish.png
+        - images/icons/cat.png
+        - images/icons/fish.png
+        - images/icons/reptile.png
+        - images/icons/label.png
+        - images/icons/interface.png
+        - images/icons/new.png
+
         - images/cat_one.jpg 
         - images/cat_two.jpg
+        - images/dog_one.jpg
+        - images/dog_two.jpg
